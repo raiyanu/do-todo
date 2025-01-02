@@ -13,12 +13,13 @@
     <div class="container">
         <div class="todo">
             <div class="todo-head">
+                <span class="ui_coin_container" id="ui_coin_container"> GoalCoin: <span id="ui_coin">0</span></span>
                 <form action="" id="taskForm">
                     <input type="text" name="todo-text" id="todo_text" placeholder="Enter your task here..." />
                     <button type="submit"><img src="./assets/add.svg" alt=""></button>
                 </form>
             </div>
-            <div class="todo-body">
+            <div class="todo-body" id="todo_body">
                 <div id="TaskList">
                     <div>
                         <input type="checkbox" id="task-1" />
@@ -57,6 +58,7 @@
         </div>
     </div>
     <script src="./js/main.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
 </body>
 
 </html>

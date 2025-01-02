@@ -30,6 +30,7 @@
 	padding: 1rem;
 	display: grid;
 	grid-template-rows: auto 1fr;
+	gap: 12px;
 }
 .todo-head form {
 	width: 100%;
@@ -58,6 +59,10 @@
 	color: var(--clr-1);
 	font-size: 30px;
 	cursor: pointer;
+	transition: 450ms ease-in-out;
+}
+.todo-head form button:hover {
+	background-color: var(--clr-2);
 }
 .todo-head form button img {
 	transition: 350ms;
@@ -80,6 +85,7 @@
 .todo-body {
 	border-radius: 0.765rem;
 	overflow-y: scroll;
+	overflow-x: hidden;
 }
 
 .todo ::-webkit-scrollbar-thumb {
@@ -175,5 +181,10 @@
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
+	user-select: none;
+}
+.ui_coin_container {
+	margin-bottom: 210px;
+	cursor: pointer;
 	user-select: none;
 }

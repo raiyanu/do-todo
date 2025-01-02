@@ -12,4 +12,9 @@ window.addEventListener("DOMContentLoaded", () => {
         }
         todo.addTask();
     })
+    ui_coin_container.addEventListener('dblclick', () => {
+        if (confirm("Do you wanna clear score?") && confirm("Are you really sure...?")) {
+            todo.clearScore();
+        }
+    });
 });
