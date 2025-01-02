@@ -10,8 +10,8 @@
     </mask>
   </defs>
   <g fill="none" fill-rule="evenodd" transform="translate(1)">
-    <path d="m1.99899903 5 .85778638 12.0090093c.07854241 1.0995938 1.04423921 1.9909907 2.15091136 1.9909907h7.98360553c1.1093731 0 2.0727734-.8970601 2.1509113-1.9909907l.8577864-12.0090093" stroke="#36434d" stroke-linecap="round" stroke-linejoin="round" />
-    <g stroke="#35424c">
+    <path d="m1.99899903 5 .85778638 12.0090093c.07854241 1.0995938 1.04423921 1.9909907 2.15091136 1.9909907h7.98360553c1.1093731 0 2.0727734-.8970601 2.1509113-1.9909907l.8577864-12.0090093" stroke="red" stroke-linecap="round" stroke-linejoin="round" />
+    <g stroke="red">
       <path d="m6.5 8v7" stroke-linecap="round" />
       <path d="m11.5 8v7" stroke-linecap="round" />
       <use mask="url(#b)" stroke-linecap="square" stroke-width="2" xlink:href="#a" />
