@@ -1,5 +1,11 @@
 export default class Todo {
-    // LOAD & CRUD
+    // Init
+    constructor() {
+        this.todo = this.getTodoFromStorage();
+    }
+
+
+    // LOAD
     getTodoFromStorage() {
         let todo = JSON.parse(localStorage.getItem("todo") || "null");
         // TODO: placeholder -> Added NOT operator [✅]
@@ -45,11 +51,12 @@ export default class Todo {
         console.log(todo);
         return todo;
     }
-
     updatePersistentStorage(todo) {
         localStorage.setItem("todo", JSON.stringify(todo));
     }
 
+
+    // CRUD Operation
     deleteTask(id) {
         console.log(`deleting task with id : ${id}`);
 
@@ -57,7 +64,6 @@ export default class Todo {
 
         this.updatePersistentStorage(this.todo);
     }
-
     updateTaskStatus(id, isCompleted) {
         for (let index = 0; index < this.todo.tasks.length; index++) {
             if (this.todo.tasks[index].id == id) {
@@ -68,8 +74,16 @@ export default class Todo {
         }
         this.updatePersistentStorage(this.todo);
     }
-
-    addTask(name) {
+    addTask() {
+        const name = todo_text.value;
+        if (!name) {
+            alert("Task cannot be empty");
+            return;
+        }
+        if (name.length > 100) {
+            alert("Task cannot be longer than 100 characters");
+            return;
+        }
         console.log(name);
         console.log(`New id : ${this.getNewId()}`);
         this.todo.tasks.push({
@@ -78,8 +92,46 @@ export default class Todo {
             completed: false,
         });
         this.updatePersistentStorage(this.todo);
+        this.updateUi();
+        todo_text.value = '';
     }
 
+
+    // Utils
+    createTaskDom(task) {
+        let taskElement = document.createElement("div");
+        let buttonElement = document.createElement("button");
+
+        buttonElement.addEventListener("click", () => {
+            this.deleteTask(task.id);
+            this.updateUi();
+        });
+
+        buttonElement.innerHTML = `
+    <img class="trash" src="./assets/trash.svg" alt=""> 
+    <img class="trash-focus" src="./assets/trash-focus.svg" alt="">`;
+        taskElement.innerHTML = `
+    <input id="task-${task.id}" type="checkbox" ${task.completed ? "checked" : ""}>
+    <label for="task-${task.id}">${task.name.trim()}</label>
+`;
+
+        let checkbox = taskElement.querySelector(`#task-${task.id}`);
+        checkbox.addEventListener("change", () => {
+            this.updateTaskStatus(task.id, checkbox.checked);
+        });
+
+        taskElement.appendChild(buttonElement);
+        return taskElement;
+
+    }
+    updateUi() {
+        let taskContainer = document.getElementById('TaskList')
+        taskContainer.innerHTML = "";
+        this.todo.tasks.forEach((task) => {
+            taskContainer.appendChild(this.createTaskDom(task))
+        });
+        console.log("UI updated with todos:", this.todo);
+    }
     getNewId() {
         let id = 0
         this.todo.tasks.forEach(task => {
@@ -95,10 +147,5 @@ export default class Todo {
             }
         });
         return id + 1;
-    }
-
-    // Init
-    constructor() {
-        this.todo = this.getTodoFromStorage();
     }
 }
