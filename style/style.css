@@ -29,14 +29,15 @@
 	border-radius: 0.765rem;
 	padding: 1rem;
 	display: grid;
-	grid-template-rows: auto 1px 1fr;
+	grid-template-rows: auto 12px 1fr;
 }
 .todo > hr {
 	width: 80%;
 	margin-inline: auto;
 	background-color: rgba(46, 80, 119, 0.301);
-	margin-block: 10px;
+	margin-block: 5px;
 	height: 1px;
+	border-radius: 100px;
 }
 .todo-head form {
 	width: 100%;
@@ -97,6 +98,9 @@
 }
 .todo-body #TaskList > div button {
 	opacity: 0;
+}
+.todo-body #TaskList > div label::first-letter {
+	text-transform: capitalize;
 }
 .todo-body #TaskList > div:hover button {
 	cursor: pointer;
