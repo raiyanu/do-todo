@@ -8,7 +8,7 @@ export default class Todo {
     // LOAD
     getTodoFromStorage() {
         let todo = JSON.parse(localStorage.getItem("todo") || "null");
-        // TODO: placeholder -> Added NOT operator [✅]
+        // TODO: placeholder -> Add NOT operator [✅]
         if (!todo) {
             todo = {
                 tasks: [
@@ -66,14 +66,15 @@ export default class Todo {
     }
     updateTaskStatus(id, isCompleted) {
         for (let index = 0; index < this.todo.tasks.length; index++) {
-            if (this.todo.tasks[index].id == id)
+            if (this.todo.tasks[index].id == id) {
                 this.todo.tasks[index].completed = isCompleted;
-            break;
+                break;
+            }
         }
         this.updatePersistentStorage(this.todo);
-        if (isCompleted) this.splashConfetti();
-        if (isCompleted) this.GoalCoins = this.GoalCoins + 1;
         this.updatePersistentStorageCoins(this.GoalCoins);
+        if (isCompleted) this.GoalCoins = this.GoalCoins + 1;
+        if (isCompleted) this.splashConfetti();
         ui_coin.innerHTML = this.GoalCoins;
         console.log(this.GoalCoins);
 

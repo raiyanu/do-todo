@@ -1,0 +1,26 @@
+.ui_coin_container {
+	position: relative;
+	padding: 2px 8px;
+	z-index: 1;
+	display: block;
+	width: fit-content;
+	margin-bottom: 5px;
+	font-size: small;
+	--value: 0%;
+	border-radius: 3px;
+	overflow: hidden;
+}
+.grow {
+	--value: 100%;
+}
+.ui_coin_container::before {
+	content: " ";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: rgba(255, 0, 0, 0.418);
+	height: 100%;
+	width: var(--value);
+	z-index: -1;
+}
