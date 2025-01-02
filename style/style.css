@@ -35,7 +35,7 @@
 	width: 80%;
 	margin-inline: auto;
 	background-color: rgba(46, 80, 119, 0.301);
-	margin-block: 5px;
+	margin-block: 10px;
 	height: 1px;
 	border-radius: 100px;
 }
@@ -67,6 +67,23 @@
 	font-size: 30px;
 	cursor: pointer;
 }
+.todo-head form button img {
+	transition: 350ms;
+	animation: rotate_in 450ms ease-in;
+}
+.todo-head form button:hover img {
+	transform: rotate(90deg);
+}
+@keyframes rotate_in {
+	0% {
+		opacity: 0;
+		transform: rotate(90deg);
+	}
+	100% {
+		opacity: 1;
+		transform: rotate(0deg);
+	}
+}
 
 .todo-body {
 	border-radius: 0.765rem;
@@ -85,19 +102,42 @@
 }
 .todo-body #TaskList {
 	height: max-content;
-	padding: 10px;
+	padding: 5px;
 	accent-color: var(--clr-2);
 }
 .todo-body #TaskList > div {
 	display: grid;
 	grid-template-columns: 20px 1fr 20px;
 	align-items: flex-start;
-	padding-block: 5px;
+	padding-block: 10px;
 	gap: 12px;
-	margin-block: 14px;
+	margin-block: 10px;
+	border-radius: 8px;
+	padding-inline: 10px;
+	transition: 250ms ease-in-out;
+}
+.todo-body #TaskList > div:hover {
+	background-color: rgba(86, 115, 148, 0.17);
+}
+
+.slide_in {
+	animation: slide_in 350ms ease-in-out;
+}
+
+@keyframes slide_in {
+	0% {
+		background-color: rgba(86, 115, 148, 0.17);
+		transform: translateX(100%);
+	}
+	100% {
+		background-color: transparent;
+		transform: translateX(0%);
+		opacity: 1;
+	}
 }
 .todo-body #TaskList > div button {
 	opacity: 0;
+	background-color: transparent;
 }
 .todo-body #TaskList > div label::first-letter {
 	text-transform: capitalize;
@@ -131,8 +171,7 @@
 .todo-body #TaskList > div label {
 	cursor: pointer;
 }
-.todo-body #TaskList > div input:checked {
-}
+
 .todo-body #TaskList > div input:checked + label {
 	text-decoration: line-through;
 	color: rgba(86, 115, 148, 0.541);

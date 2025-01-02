@@ -4,7 +4,6 @@ export default class Todo {
         this.todo = this.getTodoFromStorage();
     }
 
-
     // LOAD
     getTodoFromStorage() {
         let todo = JSON.parse(localStorage.getItem("todo") || "null");
@@ -57,23 +56,6 @@ export default class Todo {
 
 
     // CRUD Operation
-    deleteTask(id) {
-        console.log(`deleting task with id : ${id}`);
-
-        this.todo.tasks = this.todo.tasks.filter((task) => !(task.id == id));
-
-        this.updatePersistentStorage(this.todo);
-    }
-    updateTaskStatus(id, isCompleted) {
-        for (let index = 0; index < this.todo.tasks.length; index++) {
-            if (this.todo.tasks[index].id == id) {
-                this.todo.tasks[index].completed = isCompleted;
-                console.log(this.todo.tasks[index]);
-                break;
-            }
-        }
-        this.updatePersistentStorage(this.todo);
-    }
     addTask() {
         const name = todo_text.value;
         if (!name) {
@@ -86,15 +68,36 @@ export default class Todo {
         }
         console.log(name);
         console.log(`New id : ${this.getNewId()}`);
-        this.todo.tasks.push({
-            id: this.getNewId(),
+        const id = this.getNewId()
+        const newTask = {
+            id,
             name,
             completed: false,
-        });
+        }
+        this.todo.tasks.push(newTask);
         this.updatePersistentStorage(this.todo);
-        this.updateUi();
+        this.addTaskOnUi(newTask);
         todo_text.value = '';
     }
+    updateTaskStatus(id, isCompleted) {
+        for (let index = 0; index < this.todo.tasks.length; index++) {
+            if (this.todo.tasks[index].id == id) {
+                this.todo.tasks[index].completed = isCompleted;
+                break;
+            }
+        }
+        this.updatePersistentStorage(this.todo);
+    }
+    deleteTask(id) {
+        if (!confirm("Are you sure...?")) return;
+
+        console.log(`deleting task with id : ${id}`);
+
+        this.todo.tasks = this.todo.tasks.filter((task) => !(task.id == id));
+
+        this.updatePersistentStorage(this.todo);
+    }
+
 
 
     // Utils
@@ -123,6 +126,13 @@ export default class Todo {
         taskElement.appendChild(buttonElement);
         return taskElement;
 
+    }
+    addTaskOnUi(task) {
+        let taskContainer = document.getElementById('TaskList')
+        const newTaskElement = this.createTaskDom(task);
+        newTaskElement.classList.add('slide_in');
+        taskContainer.appendChild(newTaskElement)
+        console.log("UI one task:", this.todo);
     }
     updateUi() {
         let taskContainer = document.getElementById('TaskList')
