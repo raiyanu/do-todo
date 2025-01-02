@@ -95,13 +95,23 @@
 	gap: 12px;
 	margin-block: 14px;
 }
-.todo-body #TaskList > div::after {
-	content: url(../assets/trash.svg);
+.todo-body #TaskList > div button {
 	opacity: 0;
 }
-.todo-body #TaskList > div:hover:after {
+.todo-body #TaskList > div:hover button {
 	cursor: pointer;
 	opacity: 1;
+}
+
+.trash-focus {
+	display: none;
+}
+
+.todo-body #TaskList > div button:hover .trash {
+	display: none;
+}
+.todo-body #TaskList > div button:hover .trash-focus {
+	display: block;
 }
 
 .todo-body #TaskList > div input {

@@ -1,3 +1,4 @@
+"use strict";
 export default class Todo {
     getTodoFromStorage() {
         let todo = JSON.parse(localStorage.getItem("todo") || "null");
