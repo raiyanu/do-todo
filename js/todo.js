@@ -89,7 +89,8 @@ export default class Todo {
         this.updatePersistentStorage(this.todo);
     }
     deleteTask(id) {
-        if (!confirm("Are you sure...?")) return;
+        // TODO: uncomment this for confirmation
+        // if (!confirm("Are you sure...?")) return;
 
         console.log(`deleting task with id : ${id}`);
 

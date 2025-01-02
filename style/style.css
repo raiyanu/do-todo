@@ -29,15 +29,7 @@
 	border-radius: 0.765rem;
 	padding: 1rem;
 	display: grid;
-	grid-template-rows: auto 12px 1fr;
-}
-.todo > hr {
-	width: 80%;
-	margin-inline: auto;
-	background-color: rgba(46, 80, 119, 0.301);
-	margin-block: 10px;
-	height: 1px;
-	border-radius: 100px;
+	grid-template-rows: auto 1fr;
 }
 .todo-head form {
 	width: 100%;
