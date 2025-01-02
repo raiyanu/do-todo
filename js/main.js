@@ -20,6 +20,11 @@ function createTaskDom(task) {
     let taskElement = document.createElement("div");
     let buttonElement = document.createElement("button");
 
+    buttonElement.addEventListener("click", () => {
+        todo.deleteTask(task.id);
+        updateUi();
+    });
+
     buttonElement.innerHTML = `
     <img class="trash" src="./assets/trash.svg" alt=""> 
     <img class="trash-focus" src="./assets/trash-focus.svg" alt="">
@@ -41,4 +46,25 @@ function createTaskDom(task) {
 
 window.addEventListener("DOMContentLoaded", () => {
     updateUi();
+    taskForm.addEventListener('submit', (e) => {
+        try {
+            e.preventDefault();
+        } catch (error) {
+            console.log("form preventing error");
+        }
+
+        const todoText = todo_text.value.trim();
+
+        if (!todoText) {
+            alert("Task cannot be empty");
+            return;
+        }
+        if (todoText.length > 100) {
+            alert("Task cannot be longer than 100 characters");
+            return;
+        }
+        todo.addTask(todo_text.value);
+        updateUi();
+        todo_text.value = '';
+    })
 });

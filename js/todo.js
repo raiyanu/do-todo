@@ -3,7 +3,7 @@ export default class Todo {
     getTodoFromStorage() {
         let todo = JSON.parse(localStorage.getItem("todo") || "null");
         // TODO: placeholder -> Added NOT operator [✅]
-        if (todo) {
+        if (!todo) {
             todo = {
                 tasks: [
                     {
@@ -29,10 +29,12 @@ export default class Todo {
                 ],
                 recycleBin: [
                     {
+                        id: 5,
                         name: "Your deleted Task goes here",
                         completed: true,
                     },
                     {
+                        id: 6,
                         name: "Your deleted Task goes here",
                         completed: true,
                     },
@@ -65,6 +67,34 @@ export default class Todo {
             }
         }
         this.updatePersistentStorage(this.todo);
+    }
+
+    addTask(name) {
+        console.log(name);
+        console.log(`New id : ${this.getNewId()}`);
+        this.todo.tasks.push({
+            id: this.getNewId(),
+            name,
+            completed: false,
+        });
+        this.updatePersistentStorage(this.todo);
+    }
+
+    getNewId() {
+        let id = 0
+        this.todo.tasks.forEach(task => {
+            if (task.id > id) {
+                id = task.id;
+            }
+        });
+        this.todo.recycleBin.forEach(task => {
+            console.log(task);
+
+            if (task.id > id) {
+                id = task.id;
+            }
+        });
+        return id + 1;
     }
 
     // Init
