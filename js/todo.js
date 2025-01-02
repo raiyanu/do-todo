@@ -90,7 +90,7 @@ export default class Todo {
     }
     deleteTask(id) {
         // TODO: uncomment this for confirmation
-        // if (!confirm("Are you sure...?")) return;
+        if (!confirm("Are you sure...?")) return;
 
         console.log(`deleting task with id : ${id}`);
 
