@@ -77,7 +77,6 @@ export default class Todo {
         if (isCompleted) this.splashConfetti();
         ui_coin.innerHTML = this.GoalCoins;
         console.log(this.GoalCoins);
-
     }
     deleteTask(id) {
         // TODO: uncomment this for confirmation
@@ -88,13 +87,16 @@ export default class Todo {
         this.todo.tasks = this.todo.tasks.filter((task) => !(task.id == id));
 
         this.updatePersistentStorage(this.todo);
+
+        this.updateUi();
     }
 
     // Utils
     createTaskDom(task) {
         let taskElement = document.createElement("div");
         let buttonElement = document.createElement("button");
-
+        if (!task.completed) {
+        }
         buttonElement.addEventListener("click", () => {
             this.deleteTask(task.id);
             this.updateUi();
@@ -110,9 +112,15 @@ export default class Todo {
 `;
 
         let checkbox = taskElement.querySelector(`#task-${task.id}`);
-        checkbox.addEventListener("change", () => {
-            this.updateTaskStatus(task.id, checkbox.checked);
-        });
+        if (!task.completed) {
+            checkbox.addEventListener("change", () => {
+                this.updateTaskStatus(task.id, checkbox.checked);
+                // checkbox.setAttribute("disabled", true);
+                this.updateUi();
+            });
+        } else {
+            checkbox.setAttribute("disabled", true);
+        }
 
         taskElement.appendChild(buttonElement);
         return taskElement;
@@ -123,13 +131,19 @@ export default class Todo {
         newTaskElement.classList.add("slide_in");
         taskContainer.appendChild(newTaskElement);
         console.log("UI one task:", this.todo);
-        document.getElementById('todo_body').scrollBy(0, 10000);
+        document.getElementById("todo_body").scrollBy(0, 10000);
     }
     updateUi() {
         let taskContainer = document.getElementById("TaskList");
+        let completedContainer = document.getElementById("CompletedTaskList");
         taskContainer.innerHTML = "";
+        completedContainer.innerHTML = "";
         this.todo.tasks.forEach((task) => {
-            taskContainer.appendChild(this.createTaskDom(task));
+            if (!task.completed) {
+                taskContainer.appendChild(this.createTaskDom(task));
+            } else {
+                completedContainer.appendChild(this.createTaskDom(task));
+            }
         });
         console.log("UI updated with todos:", this.todo);
         ui_coin.innerHTML = this.GoalCoins;

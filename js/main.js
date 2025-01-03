@@ -12,6 +12,11 @@ window.addEventListener("DOMContentLoaded", () => {
         }
         todo.addTask();
     })
+    // Toggling Completed task container
+    document.getElementById('toggleComplete').addEventListener('click', () => {
+        document.getElementById('ArrowIcon').classList.toggle('onViewButton');
+        document.getElementById('CompletedTaskList').classList.toggle('onViewTask');
+    })
 
     // GoalCoin Clear 
     let ui_coin_container = document.getElementById("ui_coin_container");
@@ -40,7 +45,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 progress += 1;
                 ui_coin_container.style.cssText = `--value: ${progress}%;`;
             }
-        }, 10);
+        }, 5);
     }
 
     function stopProgress() {

@@ -14,7 +14,7 @@
     <div class="container">
         <div class="todo">
             <div class="todo-head">
-                <span class="ui_coin_container" data-long-press-delay="500" id="ui_coin_container"> GoalCoin: <span
+                <span class="ui_coin_container" data-long-press-delay="500" id="ui_coin_container"> Goal Coin: <span
                         id="ui_coin">0</span></span>
                 <form action="" id="taskForm">
                     <input type="text" name="todo-text" id="todo_text" placeholder="Enter your task here..." />
@@ -22,39 +22,15 @@
                 </form>
             </div>
             <div class="todo-body" id="todo_body">
-                <div id="TaskList">
-                    <div>
-                        <input type="checkbox" id="task-1" />
-                        <label for="task-1"> Finish the presentation slides. </label>
-                        <button>
-                            <img class="trash" src="./assets/trash.svg" alt="" />
-                            <img class="trash-focus" src="./assets/trash-focus.svg" alt="" />
-                        </button>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="task-2" />
-                        <label for="task-2"> Reply to urgent emails. </label>
-                        <button>
-                            <img class="trash" src="./assets/trash.svg" alt="" />
-                            <img class="trash-focus" src="./assets/trash-focus.svg" alt="" />
-                        </button>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="task-3" />
-                        <label for="task-3"> Book a flight for the weekend trip. </label>
-                        <button>
-                            <img class="trash" src="./assets/trash.svg" alt="" />
-                            <img class="trash-focus" src="./assets/trash-focus.svg" alt="" />
-                        </button>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="task-4" />
-                        <label for="task-4"> Schedule a meeting with the new client. </label>
-                        <button>
-                            <img class="trash" src="./assets/trash.svg" alt="" />
-                            <img class="trash-focus" src="./assets/trash-focus.svg" alt="" />
-                        </button>
-                    </div>
+                <div id="TaskList" class="taskListContainer">
+                </div>
+                <div class="completedTask" id="toggleComplete">
+                    <p>Completed</p>
+                    <button class="toggleComplete">
+                        <img src="./assets/arrow-right.svg" id="ArrowIcon" alt="">
+                    </button>
+                </div>
+                <div id="CompletedTaskList" class="taskListContainer completedTaskListContainer  ">
                 </div>
             </div>
         </div>
