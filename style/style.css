@@ -230,6 +230,7 @@ img {
 }
 .todo-topbar .util-action img {
 	cursor: pointer;
+	transition: all 250ms;
 }
 .util-list {
 	position: absolute;
@@ -264,4 +265,7 @@ img {
 }
 .showUtil {
 	display: block;
+}
+.isOpen {
+	rotate: 120deg;
 }
