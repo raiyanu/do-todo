@@ -139,7 +139,7 @@
 	background-color: transparent;
 }
 .todo-body .taskListContainer > div label::first-letter {
-	text-transform: capitalize;
+	/* text-transform: capitalize; */
 }
 .todo-body .taskListContainer > div:hover button {
 	cursor: pointer;

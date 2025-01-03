@@ -72,8 +72,8 @@ export default class Todo {
             }
         }
         this.updatePersistentStorage(this.todo);
-        this.updatePersistentStorageCoins(this.GoalCoins);
         if (isCompleted) this.GoalCoins = this.GoalCoins + 1;
+        this.updatePersistentStorageCoins(this.GoalCoins);
         if (isCompleted) this.splashConfetti();
         ui_coin.innerHTML = this.GoalCoins;
         console.log(this.GoalCoins);
