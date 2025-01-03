@@ -64,4 +64,14 @@ window.addEventListener("DOMContentLoaded", () => {
             ui_coin_container.style.cssText = `--value: ${progress}%; `;
         }
     }
+
+    // Multiple task removing 
+    document.getElementById('uiClearAll').addEventListener('click', () => {
+        todo.removeAllTask()
+        util_list.classList.toggle('showUtil')
+    })
+    document.getElementById('uiClearAllCompleted').addEventListener('click', () => {
+        todo.removeAllCompletedTask()
+        util_list.classList.toggle('showUtil')
+    })
 });

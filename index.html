@@ -14,8 +14,17 @@
     <div class="container">
         <div class="todo">
             <div class="todo-head">
-                <span class="ui_coin_container" data-long-press-delay="500" id="ui_coin_container"> Goal Coin: <span
-                        id="ui_coin">0</span></span>
+                <div class="todo-topbar">
+                    <span class="ui_coin_container" data-long-press-delay="500" id="ui_coin_container"> Goal Coin: <span
+                            id="ui_coin">0</span></span>
+                    <div class="util-action">
+                        <img src="./assets/setting.svg" onclick="util_list.classList.toggle('showUtil')" alt="">
+                        <div class="util-list" id="util_list">
+                            <p><b>Delete:</b> <br> <span class="utils-trigger" id="uiClearAll">All</span> - <span
+                                    class="utils-trigger" id="uiClearAllCompleted">completed</span></p>
+                        </div>
+                    </div>
+                </div>
                 <form action="" id="taskForm">
                     <input type="text" name="todo-text" id="todo_text" placeholder="Enter your task here..." />
                     <button type="submit"><img src="./assets/add.svg" alt=""></button>

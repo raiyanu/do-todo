@@ -90,6 +90,18 @@ export default class Todo {
 
         this.updateUi();
     }
+    removeAllCompletedTask() {
+        this.todo.tasks = this.todo.tasks.filter((task) => !task.completed);
+        console.log(this.todo.tasks);
+        this.updatePersistentStorage(this.todo);
+        this.updateUi();
+    }
+    removeAllTask() {
+        this.todo.tasks = [];
+        console.log(this.todo.tasks);
+        this.updatePersistentStorage(this.todo);
+        this.updateUi();
+    }
 
     // Utils
     createTaskDom(task) {
