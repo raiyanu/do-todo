@@ -91,12 +91,14 @@ export default class Todo {
         this.updateUi();
     }
     removeAllCompletedTask() {
+        if (!confirm("Confirm deleting all completed task ?")) return;
         this.todo.tasks = this.todo.tasks.filter((task) => !task.completed);
         console.log(this.todo.tasks);
         this.updatePersistentStorage(this.todo);
         this.updateUi();
     }
     removeAllTask() {
+        if (!confirm("Confirm deleting all task?")) return;
         this.todo.tasks = [];
         console.log(this.todo.tasks);
         this.updatePersistentStorage(this.todo);
